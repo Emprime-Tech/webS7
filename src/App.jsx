@@ -8,19 +8,19 @@ const Contact = lazy(() => import("./components/Contact"));
 const ContactLocation = lazy(() => import("./components/ContactLocation"));
 const Footer = lazy(() => import("./components/Footer"));
 const About = lazy(() => import("./components/About"));
-import LoadingPage from "./components/LoadingPage";
+// import LoadingPage from "./components/LoadingPage";
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   // hide the loader once it reports 100%
-  const handleLoaded = () => {
-    setLoading(false);
-  };
+  // const handleLoaded = () => {
+  //   setLoading(false);
+  // };
 
-  if (loading) {
-    return <LoadingPage onComplete={handleLoaded} />;
-  }
+  // if (loading) {
+  //   return <LoadingPage onComplete={handleLoaded} />;
+  // }
 
   return (
     <Suspense fallback={<LoadingPage onComplete={() => {}} />}>
