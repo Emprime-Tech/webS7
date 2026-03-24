@@ -80,14 +80,14 @@ export default function CourtsSection() {
       </div>
 
       {/* --- Footer --- */}
-      <div className="text-center mb-4 relative z-10">
+      {/* <div className="text-center mb-4 relative z-10">
         <span className="text-xs uppercase tracking-[0.2em] text-white/50">
           Contact Us
         </span>
         <h2 className="text-4xl md:text-5xl text-[#e85c0d] mt-1">
           Get in Touch
         </h2>
-      </div>
+      </div> */}
 
     </section>
   );
