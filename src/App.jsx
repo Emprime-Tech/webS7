@@ -23,7 +23,7 @@ function App() {
   // }
 
   return (
-    <Suspense fallback={<LoadingPage onComplete={() => {}} />}>
+    // <Suspense fallback={<LoadingPage onComplete={() => {}} />}>
       <div className="font-sans overflow-x-hidden">
         <Navbar />
         <main className="">
@@ -37,7 +37,7 @@ function App() {
         <Footer />
         {/* <Chatbot /> */}
       </div>
-    </Suspense>
+    // </Suspense>
   );
 }
 
