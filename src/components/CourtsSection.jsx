@@ -16,12 +16,12 @@ export default function CourtsSection() {
     >
       {sectionInView ? (
         <>
-          <div className="absolute inset-0 -z-20 bg-[#120804]" />
+          {/* <div className="absolute inset-0 -z-20 bg-[#120804]" />
           <OptimizedImage
             src={locationBg}
             alt=""
             className="absolute inset-0 w-full h-full object-cover object-center -z-10"
-          />
+          /> */}
           <div
             className="absolute inset-0 -z-[5]"
             style={{
