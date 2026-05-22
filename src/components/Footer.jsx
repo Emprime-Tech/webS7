@@ -1,20 +1,33 @@
 import React from 'react';
-import footer from '../assets/footer.png'; // 👈 Your background image
+import { Link } from 'react-router-dom';
+import footer from '../assets/footer-opt.webp';
+import { homeSectionPath } from '../constants/navSections';
+import { useInView } from '../hooks/useInView';
+import OptimizedImage from './OptimizedImage';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [footerRef, footerInView] = useInView('300px');
 
   return (
-    <footer className="relative w-full font-sans tracking-wide text-white py-16 px-6 md:px-12 lg:px-24 overflow-hidden">
+    <footer
+      ref={footerRef}
+      className="perf-section relative w-full font-sans tracking-wide text-white py-16 px-6 md:px-12 lg:px-24 overflow-hidden"
+    >
+      {footerInView && (
+        <OptimizedImage
+          src={footer}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-center -z-20"
+        />
+      )}
 
-      {/* ✅ Background Image */}
-      <img
-        src={footer}
-        alt="Footer Background"
-        className="absolute inset-0 w-full h-full object-cover object-center -z-20"
-        loading="lazy"
-        decoding="async"
-      />
+      {!footerInView && (
+        <div
+          className="absolute inset-0 -z-20"
+          style={{ background: 'linear-gradient(180deg, #1c0f06 0%, #120804 100%)' }}
+        />
+      )}
 
       {/* ✅ Overlay to make text pop against image background */}
       {/* <div className="absolute inset-0 bg-black/60 -z-10" /> */}
@@ -54,10 +67,10 @@ export default function Footer() {
         <div className="flex flex-col items-start space-y-4">
           <h4 className="text-lg font-medium text-[#e85c0d]">Navigation</h4>
           <ul className="space-y-3">
-            <li><a href="#home" className="text-xs text-white/60 hover:text-white transition-colors">Home</a></li>
-            <li><a href="#about" className="text-xs text-white/60 hover:text-white transition-colors">About</a></li>
-            <li><a href="#gallery" className="text-xs text-white/60 hover:text-white transition-colors">Gallery</a></li>
-            <li><a href="#services" className="text-xs text-white/60 hover:text-white transition-colors">Services</a></li>
+            <li><Link to={homeSectionPath('home')} className="text-xs text-white/60 hover:text-white transition-colors">Home</Link></li>
+            <li><Link to={homeSectionPath('about')} className="text-xs text-white/60 hover:text-white transition-colors">About</Link></li>
+            <li><Link to={homeSectionPath('gallery')} className="text-xs text-white/60 hover:text-white transition-colors">Gallery</Link></li>
+            <li><Link to={homeSectionPath('contact')} className="text-xs text-white/60 hover:text-white transition-colors">Services</Link></li>
           </ul>
         </div>
 
@@ -65,7 +78,7 @@ export default function Footer() {
         <div className="flex flex-col items-start space-y-4">
           <h4 className="text-lg font-medium text-[#e85c0d]">Quick Link</h4>
           <ul className="space-y-3">
-            <li><a href="#contact" className="text-xs text-white/60 hover:text-white transition-colors">Contact us</a></li>
+            <li><Link to={homeSectionPath('contact')} className="text-xs text-white/60 hover:text-white transition-colors">Contact us</Link></li>
             <li><a href="#faq" className="text-xs text-white/60 hover:text-white transition-colors">FAQs</a></li>
             <li><a href="#booking" className="text-xs text-white/60 hover:text-white transition-colors">Booking</a></li>
             <li><a href="#pages" className="text-xs text-white/60 hover:text-white transition-colors">Pages</a></li>

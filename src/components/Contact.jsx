@@ -26,13 +26,13 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen w-full flex flex-col items-center justify-start 
-      px-6 py-12 font-sans tracking-wide text-[#e2d6cd]"
+      className="relative w-full flex flex-col items-center justify-start px-6 pt-12 pb-20 font-sans tracking-wide text-[#e2d6cd] overflow-hidden"
       style={{
-        background: `
+        backgroundColor: '#120804',
+        backgroundImage: `
           radial-gradient(circle at 80% 70%, #8a4b14 0%, #5a2e0a 25%, #2b1406 55%, #140904 100%),
           linear-gradient(135deg, #120804 0%, #1c0f06 40%, #2a1608 70%, #120804 100%)
-        `
+        `,
       }}
     >
 
@@ -47,7 +47,7 @@ export default function Contact() {
       </div>
 
       {/* FORM CONTAINER */}
-      <div className="w-full max-w-5xl border border-white/10 rounded-xl p-8 bg-white/[0.02] backdrop-blur-md">
+      <div className="w-full max-w-5xl border border-white/10 rounded-xl p-8 bg-white/[0.04]">
 
         <form onSubmit={handleSubmit} className="space-y-6">
 
@@ -66,7 +66,7 @@ export default function Contact() {
                 required
                 className="w-full h-12 px-4 rounded-xl border border-white/10 bg-white/[0.05] 
                 text-sm text-[#e2d6cd] placeholder-white/30 
-                focus:outline-none focus:border-orange-400 focus:bg-white/[0.08] transition-all"
+                focus:outline-none focus:border-orange-400 focus:bg-white/[0.08]"
               />
             </div>
 
@@ -83,7 +83,7 @@ export default function Contact() {
                 required
                 className="w-full h-12 px-4 rounded-xl border border-white/10 bg-white/[0.05] 
                 text-sm text-[#e2d6cd] placeholder-white/30 
-                focus:outline-none focus:border-orange-400 focus:bg-white/[0.08] transition-all"
+                focus:outline-none focus:border-orange-400 focus:bg-white/[0.08]"
               />
             </div>
           </div>
@@ -103,7 +103,7 @@ export default function Contact() {
                 required
                 className="w-full h-12 px-4 rounded-xl border border-white/10 bg-white/[0.05] 
                 text-sm text-[#e2d6cd] placeholder-white/30 
-                focus:outline-none focus:border-orange-400 focus:bg-white/[0.08] transition-all"
+                focus:outline-none focus:border-orange-400 focus:bg-white/[0.08]"
               />
             </div>
 
@@ -120,7 +120,7 @@ export default function Contact() {
                 required
                 className="w-full h-12 px-4 rounded-xl border border-white/10 bg-white/[0.05] 
                 text-sm text-[#e2d6cd] placeholder-white/30 
-                focus:outline-none focus:border-orange-400 focus:bg-white/[0.08] transition-all"
+                focus:outline-none focus:border-orange-400 focus:bg-white/[0.08]"
               />
             </div>
           </div>
@@ -142,10 +142,10 @@ export default function Contact() {
                 rows={6}
                 required
                 className="w-full p-4 rounded-xl border border-white/10 
-                bg-[#ffffff08] 
+                bg-white/5
                 text-sm text-[#e2d6cd] placeholder-white/30 
                 focus:outline-none focus:border-orange-300 
-                transition-all resize-none"
+                resize-none"
               />
             </div>
           </div>
@@ -170,7 +170,7 @@ export default function Contact() {
               type="submit"
               className="group flex items-center space-x-2 px-10 py-3 rounded-full 
               border border-white/30 text-xs text-[#dfd0c5] tracking-widest 
-              hover:bg-white/10 transition-all duration-300"
+              hover:bg-white/10"
             >
               <span>Send Message</span>
               <svg

@@ -20,9 +20,21 @@
     scroll-behavior: smooth;
   }
 
+  html,
+  body,
+  #root {
+    background-color: #120804;
+    margin: 0;
+    min-height: 100%;
+  }
+
   body {
     font-family: "Inter", system-ui, sans-serif;
-    transition: background-color 0.3s, color 0.3s;
+    color: #fff;
+  }
+
+  main {
+    background-color: #120804;
   }
 }
 
@@ -82,12 +94,44 @@
 @layer utilities {
   /* fallback marquee animation */
   @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
   }
 
   .animate-marquee {
-    animation: marquee 20s linear infinite;
+    animation: marquee 40s linear infinite;
+  }
+
+  @media (hover: hover) {
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  .perf-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+  }
+
+  .page-transition-overlay {
+    animation: page-transition-fade 0.38s ease-in-out forwards;
+  }
+
+  @keyframes page-transition-fade {
+    0% { opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
   }
 }
 @keyframes slide-up {
