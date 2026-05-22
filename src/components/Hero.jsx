@@ -18,12 +18,12 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent -z-10" />
 
       <div className="w-full max-w-2xl flex flex-col items-start space-y-6 z-10">
-        <h1 className="text-5xl md:text-6xl font-medium leading-tight">
+        <h1 className="text-5xl md:text-8xl font-medium leading-tight">
           <span className="text-[#e85c0d]">Where</span> Padel <br />
           Meet Precision
         </h1>
 
-        <p className="text-sm md:text-base text-white/90 max-w-sm leading-relaxed">
+        <p className="text-sm md:text-2xl text-white/90 max-w-sm leading-relaxed">
           A premium indoor padel experience designed for performance, comfort, and privacy.
         </p>
 
