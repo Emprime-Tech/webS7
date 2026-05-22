@@ -12,7 +12,7 @@ export default function SponsorshipPackagesSection() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 lg:gap-12 md:items-start">
         {packages.map((pkg) => (
           <div key={pkg.label} className="flex flex-col items-center w-full">
-            <TierCircle label={pkg.label} />
+            <TierCircle src={pkg.badge} alt={pkg.label} />
 
             <div
               className="w-full mt-10 rounded-md overflow-hidden flex-1"

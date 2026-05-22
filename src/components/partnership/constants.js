@@ -1,3 +1,7 @@
+import bronzeBadge from '../../assets/bronze-partner.png';
+import silverBadge from '../../assets/silver-partner.png';
+import goldBadge from '../../assets/gold-partner.png';
+
 export const ACCENT = '#e85c0d';
 export const PAGE_BG = '#120804';
 
@@ -19,6 +23,7 @@ export const whyPartner = [
 export const packages = [
   {
     label: 'BRONZE PARTNER',
+    badge: bronzeBadge,
     summary: 'Brand visibility across facility and community events.',
     features: [
       'Website logo placement',
@@ -29,6 +34,7 @@ export const packages = [
   },
   {
     label: 'SILVER PARTNER',
+    badge: silverBadge,
     summary: 'Stronger exposure across courts and digital platforms.',
     features: [
       'Premium website placement',
@@ -40,6 +46,7 @@ export const packages = [
   },
   {
     label: 'GOLD PARTNER',
+    badge: goldBadge,
     summary: 'Exclusive partnership with maximum visibility.',
     features: [
       'Court naming rights',
