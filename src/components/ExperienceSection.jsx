@@ -19,15 +19,15 @@ const cards = [
 
 function MarqueeCard({ card, loadImage }) {
   return (
-    <div className="flex flex-col items-center space-y-4 w-72 shrink-0">
-      <div className="relative h-72 w-72 rounded-2xl overflow-hidden border border-white/20 bg-black/30">
+    <div className="flex flex-col items-center gap-3 w-[260px] sm:w-72 shrink-0">
+      <div className="relative h-64 w-full sm:h-72 sm:w-72 rounded-2xl overflow-hidden border border-white/20 bg-black/30">
         {loadImage ? (
           <OptimizedImage
             src={card.img}
             alt={card.title}
             width={288}
             height={288}
-            sizes="288px"
+            sizes="(max-width: 640px) 260px, 288px"
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
         ) : (
@@ -50,14 +50,14 @@ export default function ExperienceSection() {
     <section
       ref={sectionRef}
       id="about"
-      className="perf-section relative min-h-screen w-full flex flex-col justify-between p-12 font-sans tracking-wide text-white overflow-hidden"
+      className="perf-section relative min-h-screen w-full flex flex-col justify-between py-12 md:p-12 font-sans tracking-wide text-white overflow-hidden"
     >
       <div
         className="absolute inset-0 -z-20"
         style={{ background: 'linear-gradient(135deg, #000000 0%, #080604 100%)' }}
       />
 
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 mt-4 items-start z-10">
+      <div className="w-full px-5 md:px-0 grid grid-cols-1 md:grid-cols-2 gap-12 mt-4 items-start z-10">
         <div className="flex flex-col space-y-1">
           <h2 className="text-4xl md:text-5xl font-medium text-[#e85c0d]">Experience</h2>
           <h3 className="text-2xl md:text-3xl font-light text-white/90">The Atmosphere</h3>
@@ -66,8 +66,8 @@ export default function ExperienceSection() {
           </p>
         </div>
 
-        <div className="flex flex-col items-end text-right space-y-12">
-          <div className="flex flex-col items-end space-y-3 max-w-lg">
+        <div className="flex flex-col items-start md:items-end text-left md:text-right space-y-12">
+          <div className="flex flex-col items-start md:items-end space-y-3 max-w-lg">
             <h4 className="text-3xl font-medium text-[#e85c0d]">Welcome to S7 Padel</h4>
             <p className="text-sm font-light text-white/70 leading-relaxed">
               S7 is a luxury indoor padel club built for players who value quality, comfort, and a
@@ -76,22 +76,26 @@ export default function ExperienceSection() {
             </p>
           </div>
 
-          <div className="flex flex-col items-end space-y-1">
+          <div className="flex flex-col items-start md:items-end space-y-1">
             <span className="text-2xl font-medium text-[#e85c0d]">Opening Hours:</span>
             <span className="text-xl font-light text-white/90">7:00 AM - 12:00 AM</span>
           </div>
         </div>
       </div>
 
-      <div ref={trackRef} className="relative w-full overflow-hidden mb-8 mt-12 min-h-[340px]">
+      {/* Full-bleed marquee on mobile — no side gaps */}
+      <div
+        ref={trackRef}
+        className="relative w-full max-w-[100vw] overflow-hidden mb-8 mt-12 min-h-[320px] md:min-h-[340px]"
+      >
         {showMarquee ? (
-          <div className="marquee-track flex w-max space-x-6 animate-marquee">
+          <div className="marquee-track flex w-max gap-4 md:gap-6 animate-marquee">
             {loopCards.map((card, idx) => (
               <MarqueeCard key={`${card.title}-${idx}`} card={card} loadImage />
             ))}
           </div>
         ) : (
-          <div className="h-72 rounded-2xl bg-black/20 border border-white/10 mx-auto max-w-3xl" />
+          <div className="h-64 sm:h-72 rounded-2xl bg-black/20 border border-white/10 mx-5 md:mx-auto max-w-3xl" />
         )}
       </div>
     </section>

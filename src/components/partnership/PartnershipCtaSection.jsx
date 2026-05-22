@@ -13,13 +13,13 @@ export default function PartnershipCtaSection() {
       ref={ref}
       className="perf-section relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden"
     >
-      {inView && (
+      {/* {inView && (
         <OptimizedImage
           src={partnerCtaBg}
           alt=""
           className="absolute inset-0 w-full h-full object-cover object-center opacity-30"
         />
-      )}
+      )} */}
 
       <div
         className="absolute inset-0"

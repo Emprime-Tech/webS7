@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import court from '../assets/court-opt.webp';
+import locationBg from '../assets/location-opt.webp';
 import { useInView } from '../hooks/useInView';
 import OptimizedImage from './OptimizedImage';
 import LazyWhenVisible from './LazyWhenVisible';
@@ -15,11 +15,26 @@ export default function CourtsSection() {
       className="perf-section relative min-h-screen w-full flex flex-col items-center justify-between p-12 font-sans tracking-wide text-white overflow-hidden"
     >
       {sectionInView ? (
-        <OptimizedImage
-          src={court}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover object-center -z-20"
-        />
+        <>
+          <div className="absolute inset-0 -z-20 bg-[#120804]" />
+          <OptimizedImage
+            src={locationBg}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover object-center -z-10"
+          />
+          <div
+            className="absolute inset-0 -z-[5]"
+            style={{
+              background: `
+                radial-gradient(circle at 75% 50%,
+                  rgba(255, 200, 90, 0.22) 0%,
+                  rgba(255, 160, 50, 0.12) 35%,
+                  transparent 70%)
+              `,
+            }}
+          />
+          <div className="absolute inset-0 -z-[5] bg-gradient-to-l from-black/70 via-black/50 to-black/30" />
+        </>
       ) : (
         <div
           className="absolute inset-0 -z-20"

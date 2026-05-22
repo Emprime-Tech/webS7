@@ -1,5 +1,5 @@
 import React from 'react';
-import partnershipBg from '../../assets/partnership-bg-opt.webp';
+// import partnershipBg from '../../assets/partnership-bg-opt.webp';
 import OptimizedImage from '../OptimizedImage';
 import { ACCENT } from './constants';
 import OutlineButton from './OutlineButton';
@@ -7,12 +7,12 @@ import OutlineButton from './OutlineButton';
 export default function PartnershipHero() {
   return (
     <section className="perf-section relative min-h-[52vh] md:min-h-[58vh] overflow-hidden">
-      <OptimizedImage
-        src={partnershipBg}
+      {/* <OptimizedImage
+        src={''}
         alt=""
         className="absolute inset-0 w-full h-full object-cover object-center"
         priority
-      />
+      /> */}
       <div
         className="absolute inset-0"
         style={{

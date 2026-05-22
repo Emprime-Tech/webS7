@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import BrandLogo from './BrandLogo';
 import { NAV_ITEMS, homeSectionPath } from '../constants/navSections';
 
 export default function Navbar() {
@@ -12,14 +13,7 @@ export default function Navbar() {
       <div className="h-16 flex items-center justify-between px-8 rounded-2xl border border-white/20 bg-black/40 backdrop-blur-md">
         {/* Logo */}
         <div className="flex items-center">
-          <Link to={homeSectionPath('home')} className="flex flex-col group" onClick={closeMenu}>
-            <span className="text-2xl font-bold tracking-tighter text-white">
-              S<span className="text-[#e85c0d]">7</span>
-            </span>
-            <span className="text-[8px] uppercase tracking-[0.3em] text-white/60">
-              Padel Club
-            </span>
-          </Link>
+          <BrandLogo onClick={closeMenu} />
         </div>
 
         {/* Desktop Menu */}

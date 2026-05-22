@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import footer from '../assets/footer-opt.webp';
+import BrandLogo from './BrandLogo';
 import { homeSectionPath } from '../constants/navSections';
 import { useInView } from '../hooks/useInView';
 import OptimizedImage from './OptimizedImage';
@@ -38,16 +39,9 @@ export default function Footer() {
         
         {/* --- Column 1: Logo and Branding --- */}
         <div className="flex flex-col items-start space-y-6">
-          <div className="flex items-center space-x-3">
-            <div className="flex flex-col items-start">
-              <span className="text-3xl font-bold tracking-tighter text-white">
-                S<span className="text-[#e85c0d]">7</span>
-              </span>
-              <span className="text-[10px] uppercase tracking-[0.3em] font-light text-white/60">
-                Padel Club
-              </span>
-            </div>
-            
+          <div className="flex items-center space-x-4">
+            <BrandLogo variant="footer" className="pointer-events-auto" />
+
             <div className="flex flex-col">
               <span className="text-2xl font-bold tracking-wider text-[#e85c0d]">
                 PADEL
