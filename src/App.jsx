@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import SiteLayout from './layouts/SiteLayout';
 import Home from './pages/Home';
 import InitialLoader from './components/InitialLoader';
+import { AppReadyContext } from './context/AppReadyContext';
 
 const PartnershipPage = lazy(() => import('./pages/PartnershipPage'));
 
@@ -32,8 +33,10 @@ export default function App() {
     setShowLoader(false);
   }, []);
 
+  const isAppReady = !showLoader;
+
   return (
-    <>
+    <AppReadyContext.Provider value={isAppReady}>
       {showLoader && <InitialLoader onComplete={handleLoaderComplete} />}
 
       <Suspense fallback={null}>
@@ -44,6 +47,6 @@ export default function App() {
           </Route>
         </Routes>
       </Suspense>
-    </>
+    </AppReadyContext.Provider>
   );
 }
