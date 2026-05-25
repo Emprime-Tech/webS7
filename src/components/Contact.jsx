@@ -36,7 +36,7 @@ export default function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="relative w-full flex flex-col items-center justify-start px-6 pt-12 pb-20 font-sans tracking-wide text-[#e2d6cd] overflow-hidden"
+      className="relative w-full min-w-0 flex flex-col items-center justify-start px-5 sm:px-6 pt-10 sm:pt-12 pb-14 sm:pb-20 font-sans tracking-wide text-[#e2d6cd] overflow-hidden"
       style={{
         backgroundColor: '#120804',
         backgroundImage: `
@@ -45,14 +45,14 @@ export default function Contact() {
         `,
       }}
     >
-      <div className="text-center mb-10">
+      <div className="text-center mb-8 sm:mb-10 w-full max-w-5xl min-w-0 px-0">
         <p
-          className={`text-xs tracking-[0.3em] text-white/60 uppercase mb-2 ${revealClass(sectionInView, 'exp-reveal-up', 'exp-delay-1')}`}
+          className={`text-xs tracking-[0.25em] sm:tracking-[0.3em] text-white/60 uppercase mb-2 ${revealClass(sectionInView, 'exp-reveal-up', 'exp-delay-1')}`}
         >
           CONTACT US
         </p>
         <h1
-          className={`text-4xl md:text-5xl font-light text-orange-500 ${revealClass(sectionInView, 'exp-reveal-up', 'exp-delay-2')}`}
+          className={`text-3xl sm:text-4xl md:text-5xl font-light text-orange-500 ${revealClass(sectionInView, 'exp-reveal-up', 'exp-delay-2')}`}
         >
           Get in Touch
         </h1>
@@ -63,9 +63,9 @@ export default function Contact() {
       </div>
 
       <div
-        className={`w-full max-w-5xl border border-white/10 rounded-xl p-8 bg-white/[0.04] ${revealClass(sectionInView, 'cf-form-in', 'exp-delay-4')}`}
+        className={`w-full max-w-5xl min-w-0 border border-white/10 rounded-xl p-4 sm:p-6 md:p-8 bg-white/[0.04] ${revealClass(sectionInView, 'cf-form-in', 'exp-delay-4')}`}
       >
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
           <div
             className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${revealClass(sectionInView, 'cf-field-in', 'court-delay-3')}`}
           >
@@ -142,25 +142,25 @@ export default function Contact() {
           </div>
 
           <div
-            className={`flex flex-col space-y-6 items-center ${revealClass(sectionInView, 'cf-field-in', 'court-delay-6')}`}
+            className={`flex flex-col space-y-5 sm:space-y-6 items-stretch sm:items-center w-full ${revealClass(sectionInView, 'cf-field-in', 'court-delay-6')}`}
           >
-            <div className="flex items-center space-x-3 self-start">
+            <div className="flex items-start gap-3 w-full min-w-0">
               <input
                 type="checkbox"
                 id="agreeToTalk"
                 name="agreeToTalk"
                 checked={formData.agreeToTalk}
                 onChange={handleChange}
-                className="h-4 w-4 rounded border-white/30 bg-transparent text-orange-400 focus:ring-0"
+                className="h-4 w-4 mt-0.5 shrink-0 rounded border-white/30 bg-transparent text-orange-400 focus:ring-0"
               />
-              <label htmlFor="agreeToTalk" className="text-xs font-light text-[#bcaea4]">
+              <label htmlFor="agreeToTalk" className="text-xs font-light text-[#bcaea4] leading-relaxed text-left">
                 I agree to talk about my project with smart by tolabs
               </label>
             </div>
 
             <button
               type="submit"
-              className="court-btn-motion hero-btn-shine group flex items-center space-x-2 px-10 py-3 rounded-full border border-white/30 text-xs text-[#dfd0c5] tracking-widest hover:bg-white/10"
+              className="court-btn-motion hero-btn-shine group flex items-center justify-center gap-2 w-full sm:w-auto px-8 sm:px-10 py-3 rounded-full border border-white/30 text-xs text-[#dfd0c5] tracking-widest hover:bg-white/10"
             >
               <span>Send Message</span>
               <svg

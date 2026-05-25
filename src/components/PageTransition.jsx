@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import s7Logo from '../assets/SS7.PNG';
 
 const ROUTES_WITH_TRANSITION = ['/', '/partnership'];
-const DURATION_MS = 380;
+const DURATION_MS = 420;
 
 export default function PageTransition() {
   const { pathname } = useLocation();
@@ -31,14 +32,21 @@ export default function PageTransition() {
 
   return (
     <div
-      className="fixed inset-0 z-[200] flex flex-col items-center justify-center gap-3 page-transition-overlay pointer-events-none"
-      style={{ backgroundColor: 'rgba(18, 8, 4, 0.94)' }}
+      className="fixed inset-0 z-[200] flex flex-col items-center justify-center gap-5 page-transition-overlay pointer-events-none"
+      style={{ backgroundColor: 'rgba(18, 8, 4, 0.96)' }}
       aria-hidden
     >
-      <span className="text-3xl font-bold tracking-tighter text-white">
-        S<span className="text-[#e85c0d]">7</span>
-      </span>
-      <div className="h-0.5 w-16 rounded-full bg-[#e85c0d]/80" />
+      <div className="page-transition-logo flex flex-col items-center gap-4">
+        <img
+          src={s7Logo}
+          alt=""
+          className="h-14 sm:h-16 w-auto object-contain drop-shadow-[0_8px_24px_rgba(232,92,13,0.25)]"
+          width={160}
+          height={64}
+          decoding="async"
+        />
+        <div className="h-0.5 w-20 rounded-full bg-gradient-to-r from-transparent via-[#e85c0d] to-transparent" />
+      </div>
     </div>
   );
 }

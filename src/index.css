@@ -125,14 +125,41 @@
   }
 
   .page-transition-overlay {
-    animation: page-transition-fade 0.38s ease-in-out forwards;
+    animation: page-transition-fade 0.42s ease-in-out forwards;
   }
 
   @keyframes page-transition-fade {
     0% { opacity: 0; }
-    15% { opacity: 1; }
-    85% { opacity: 1; }
+    12% { opacity: 1; }
+    88% { opacity: 1; }
     100% { opacity: 0; }
+  }
+
+  @keyframes page-transition-logo {
+    0% {
+      opacity: 0;
+      transform: scale(0.88);
+      filter: blur(6px);
+    }
+    18% {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0);
+    }
+    82% {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.04);
+      filter: blur(4px);
+    }
+  }
+
+  .page-transition-logo {
+    animation: page-transition-logo 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
   /* Hero entrance & ambient motion */
@@ -701,8 +728,16 @@
   .cf-icon-pop,
   .cf-map-reveal,
   .cf-footer-col,
-  .cf-divider-grow {
+  .cf-divider-grow,
+  .page-transition-overlay,
+  .page-transition-logo {
     animation: none;
+  }
+
+  .page-transition-logo {
+    opacity: 1;
+    transform: none;
+    filter: none;
   }
 
   .hero-reveal,
