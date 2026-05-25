@@ -13,10 +13,10 @@ import c9 from '../assets/c9-opt.webp';
 import c10 from '../assets/c10-opt.webp';
 
 const cards = [
-  { title: '', img: c1 },
-  { title: '', img: c2 },
-  { title: '', img: c3 },
-  { title: '', img: c4 },
+  { title: 'Shower Room', img: c1 },
+  { title: 'Prayer Room', img: c2 },
+  { title: 'Interior', img: c3 },
+  { title: 'Free Basement Parking', img: c4 },
   { title: '', img: c5 },
   { title: '', img: c6 },
   { title: '', img: c7 },
