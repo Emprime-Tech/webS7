@@ -14,7 +14,7 @@ import c10 from '../assets/c10-opt.webp';
 
 const cards = [
   { title: 'Courts', img: c5 },
-  { title: 'Courts', img: c6 },
+  { title: '', img: c6 },
   { title: '', img: c7 },
   { title: '', img: c8 },
   { title: 'Interior', img: c3 },
