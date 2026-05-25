@@ -13,16 +13,16 @@ import c9 from '../assets/c9-opt.webp';
 import c10 from '../assets/c10-opt.webp';
 
 const cards = [
-  { title: 'Shower Room', img: c1 },
-  { title: 'Prayer Room', img: c2 },
-  { title: 'Interior', img: c3 },
-  { title: 'Free Basement Parking', img: c4 },
-  { title: '', img: c5 },
-  { title: '', img: c6 },
+  { title: 'Courts', img: c5 },
+  { title: 'Courts', img: c6 },
   { title: '', img: c7 },
   { title: '', img: c8 },
+  { title: 'Interior', img: c3 },
+  { title: 'Free Basement Parking', img: c4 },
   { title: ' ', img: c9 },
   { title: '', img: c10 },
+  { title: 'Shower Room', img: c1 },
+  { title: 'Prayer Room', img: c2 },
 ];
 
 function revealClass(inView, animation, delay = '') {
