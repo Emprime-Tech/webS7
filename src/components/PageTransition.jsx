@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import s7Logo from '../assets/SS7.PNG';
+import s7Logo from '../assets/ss7-logo-opt.webp';
 
 const ROUTES_WITH_TRANSITION = ['/', '/partnership'];
 const DURATION_MS = 420;

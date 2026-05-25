@@ -26,12 +26,26 @@ const jobs = [
   { in: 'c10.jpeg', out: 'c10-opt.webp', w: 576, h: 576 },
 ];
 
+const logoJobs = [
+  { in: 'SS7.PNG', out: 'ss7-logo-opt.webp', w: 512, h: 512 },
+];
+
 for (const { in: inputName, out, w, h } of jobs) {
   const input = path.join(assetsDir, inputName);
   const output = path.join(assetsDir, out);
   await sharp(input)
     .resize(w, h, { fit: 'cover', withoutEnlargement: true })
     .webp({ quality: 70 })
+    .toFile(output);
+  console.log(`OK ${inputName} -> ${out}`);
+}
+
+for (const { in: inputName, out, w, h } of logoJobs) {
+  const input = path.join(assetsDir, inputName);
+  const output = path.join(assetsDir, out);
+  await sharp(input)
+    .resize(w, h, { fit: 'inside', withoutEnlargement: true })
+    .webp({ quality: 88, alphaQuality: 100 })
     .toFile(output);
   console.log(`OK ${inputName} -> ${out}`);
 }

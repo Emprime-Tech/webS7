@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import s7Logo from '../assets/SS7.PNG';
+import s7Logo from '../assets/ss7-logo-opt.webp';
 
 const MIN_VISIBLE_MS = 2200;
 const PROGRESS_TICK_MS = 45;

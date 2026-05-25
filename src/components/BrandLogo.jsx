@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import s7Logo from '../assets/SS7.PNG';
+import s7Logo from '../assets/ss7-logo-opt.webp';
 import { homeSectionPath } from '../constants/navSections';
 
 export default function BrandLogo({ variant = 'nav', onClick, className = '' }) {
