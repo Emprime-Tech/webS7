@@ -6,9 +6,59 @@ import { homeSectionPath } from '../constants/navSections';
 import { useInView } from '../hooks/useInView';
 import OptimizedImage from './OptimizedImage';
 
+function revealClass(inView, animation, delay = '') {
+  return inView ? `${animation} ${delay}`.trim() : 'opacity-0';
+}
+
+const FOOTER_COLUMNS = [
+  {
+    key: 'brand',
+    delay: 'exp-delay-1',
+    content: (footerInView) => (
+      <div className={`flex flex-col items-start space-y-6 ${revealClass(footerInView, 'cf-footer-col', 'exp-delay-1')}`}>
+        <div className="flex items-center space-x-4">
+          <BrandLogo variant="footer" className="pointer-events-auto" />
+          <div className="flex flex-col">
+            <span className="text-2xl font-bold tracking-wider text-[#e85c0d]">PADEL</span>
+            <span className="text-xs font-light text-white/70">Join The Elite</span>
+          </div>
+        </div>
+        <button
+          type="button"
+          className="court-btn-motion hero-btn-shine h-12 px-10 rounded-xl border border-[#e85c0d] text-sm font-medium tracking-wide bg-transparent text-[#e85c0d] hover:bg-[#e85c0d]/10 transition-all duration-300"
+        >
+          Book Now
+        </button>
+      </div>
+    ),
+  },
+  {
+    key: 'nav',
+    delay: 'exp-delay-2',
+    title: 'Navigation',
+    links: [
+      { to: homeSectionPath('home'), label: 'Home' },
+      { to: homeSectionPath('about'), label: 'About' },
+      { to: homeSectionPath('gallery'), label: 'Gallery' },
+      { to: homeSectionPath('contact'), label: 'Services' },
+    ],
+  },
+  {
+    key: 'quick',
+    delay: 'exp-delay-3',
+    title: 'Quick Link',
+    links: [
+      { to: homeSectionPath('contact'), label: 'Contact us', isLink: true },
+      { href: '#faq', label: 'FAQs' },
+      { href: '#booking', label: 'Booking' },
+      { href: '#pages', label: 'Pages' },
+    ],
+  },
+];
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const [footerRef, footerInView] = useInView('300px');
+  const [footerRef, footerInView] = useInView('200px');
 
   return (
     <footer
@@ -16,11 +66,13 @@ export default function Footer() {
       className="perf-section relative w-full font-sans tracking-wide text-white py-16 px-6 md:px-12 lg:px-24 overflow-hidden"
     >
       {footerInView && (
-        <OptimizedImage
-          src={footer}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover object-center -z-20"
-        />
+        <div className="absolute inset-0 -z-20 overflow-hidden">
+          <OptimizedImage
+            src={footer}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover object-center exp-bg-motion"
+          />
+        </div>
       )}
 
       {!footerInView && (
@@ -30,57 +82,53 @@ export default function Footer() {
         />
       )}
 
-      {/* ✅ Overlay to make text pop against image background */}
-      {/* <div className="absolute inset-0 bg-black/60 -z-10" /> */}
+      <div
+        className={`absolute inset-0 -z-10 bg-gradient-to-t from-black/70 via-black/40 to-transparent ${footerInView ? 'exp-overlay-motion' : ''}`}
+      />
 
-
-      {/* --- UPPER CONTENT (5 Columns on Large Screens) --- */}
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 items-start">
-        
-        {/* --- Column 1: Logo and Branding --- */}
-        <div className="flex flex-col items-start space-y-6">
-          <div className="flex items-center space-x-4">
-            <BrandLogo variant="footer" className="pointer-events-auto" />
+        {FOOTER_COLUMNS[0].content(footerInView)}
 
-            <div className="flex flex-col">
-              <span className="text-2xl font-bold tracking-wider text-[#e85c0d]">
-                PADEL
-              </span>
-              <span className="text-xs font-light text-white/70">
-                Join The Elite
-              </span>
-            </div>
+        {FOOTER_COLUMNS.slice(1).map((col) => (
+          <div
+            key={col.key}
+            className={`flex flex-col items-start space-y-4 ${revealClass(footerInView, 'cf-footer-col', col.delay)}`}
+          >
+            <h4 className="text-lg font-medium text-[#e85c0d]">{col.title}</h4>
+            <ul className="space-y-3">
+              {col.links.map((link) => (
+                <li key={link.label}>
+                  {link.isLink ? (
+                    <Link
+                      to={link.to}
+                      className="cf-footer-link text-xs text-white/60 hover:text-white transition-colors inline-block"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : link.to ? (
+                    <Link
+                      to={link.to}
+                      className="cf-footer-link text-xs text-white/60 hover:text-white transition-colors inline-block"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="cf-footer-link text-xs text-white/60 hover:text-white transition-colors inline-block"
+                    >
+                      {link.label}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
+        ))}
 
-          <button className="h-12 px-10 rounded-xl border border-[#e85c0d] text-sm font-medium tracking-wide bg-transparent text-[#e85c0d] hover:bg-[#e85c0d]/10 transition-all duration-300">
-            Book Now
-          </button>
-        </div>
-
-        {/* --- Column 2: Navigation --- */}
-        <div className="flex flex-col items-start space-y-4">
-          <h4 className="text-lg font-medium text-[#e85c0d]">Navigation</h4>
-          <ul className="space-y-3">
-            <li><Link to={homeSectionPath('home')} className="text-xs text-white/60 hover:text-white transition-colors">Home</Link></li>
-            <li><Link to={homeSectionPath('about')} className="text-xs text-white/60 hover:text-white transition-colors">About</Link></li>
-            <li><Link to={homeSectionPath('gallery')} className="text-xs text-white/60 hover:text-white transition-colors">Gallery</Link></li>
-            <li><Link to={homeSectionPath('contact')} className="text-xs text-white/60 hover:text-white transition-colors">Services</Link></li>
-          </ul>
-        </div>
-
-        {/* --- Column 3: Quick Link --- */}
-        <div className="flex flex-col items-start space-y-4">
-          <h4 className="text-lg font-medium text-[#e85c0d]">Quick Link</h4>
-          <ul className="space-y-3">
-            <li><Link to={homeSectionPath('contact')} className="text-xs text-white/60 hover:text-white transition-colors">Contact us</Link></li>
-            <li><a href="#faq" className="text-xs text-white/60 hover:text-white transition-colors">FAQs</a></li>
-            <li><a href="#booking" className="text-xs text-white/60 hover:text-white transition-colors">Booking</a></li>
-            <li><a href="#pages" className="text-xs text-white/60 hover:text-white transition-colors">Pages</a></li>
-          </ul>
-        </div>
-
-        {/* ✅ NEW SECTION --- Column 4: Contact Information --- */}
-        <div className="flex flex-col items-start space-y-4">
+        <div
+          className={`flex flex-col items-start space-y-4 ${revealClass(footerInView, 'cf-footer-col', 'exp-delay-4')}`}
+        >
           <h4 className="text-lg font-medium text-[#e85c0d]">Get In Touch</h4>
           <ul className="space-y-3 text-xs text-white/60">
             <li className="flex items-start space-x-2">
@@ -105,48 +153,48 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* --- Column 5: Social Media --- */}
-        <div className="flex flex-col items-start space-y-4">
+        <div
+          className={`flex flex-col items-start space-y-4 ${revealClass(footerInView, 'cf-footer-col', 'exp-delay-5')}`}
+        >
           <h4 className="text-lg font-medium text-[#e85c0d]">Social Media</h4>
-
           <p className="text-xs text-white/60 max-w-xs">
             Connect with us and be part of the S7 padel experience
           </p>
-          
           <div className="flex space-x-4 pt-2">
-            <a href="#" className="text-[#e85c0d] hover:scale-110 transition-transform duration-200">
+            <a href="#" className="cf-social-icon text-[#e85c0d]" aria-label="Instagram">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
                 <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
               </svg>
             </a>
-
-            <a href="#" className="text-[#e85c0d] hover:scale-110 transition-transform duration-200">
+            <a href="#" className="cf-social-icon text-[#e85c0d]" aria-label="Facebook">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H8v-3h2.4V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 3h-2.4v7C18.3 21.1 22 17 22 12z" />
               </svg>
             </a>
-
-            <a href="#" className="text-[#e85c0d] hover:scale-110 transition-transform duration-200">
+            <a href="#" className="cf-social-icon text-[#e85c0d]" aria-label="Phone">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
                 <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.47-5.112-3.758-6.582-6.582l1.293-.97a1.125 1.125 0 00.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H3.75A2.25 2.25 0 001.5 4.5v2.25z" />
               </svg>
             </a>
           </div>
         </div>
-
       </div>
 
-      {/* --- ✅ NEW SECTION: Divider and Copyright Notice --- */}
-      <div className="relative z-10 max-w-7xl mx-auto mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-white/40">
+      <div
+        className={`relative z-10 max-w-7xl mx-auto mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-white/40 ${revealClass(footerInView, 'cf-footer-col', 'exp-delay-6')}`}
+      >
         <span>© {currentYear} S7 Padel Club. All rights reserved.</span>
         <div className="flex space-x-4 mt-4 md:mt-0">
-          <a href="#privacy" className="hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#terms" className="hover:text-white transition-colors">Terms of Service</a>
+          <a href="#privacy" className="cf-footer-link hover:text-white transition-colors">
+            Privacy Policy
+          </a>
+          <a href="#terms" className="cf-footer-link hover:text-white transition-colors">
+            Terms of Service
+          </a>
         </div>
       </div>
-
     </footer>
   );
 }

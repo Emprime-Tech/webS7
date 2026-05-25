@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
+import { useInView } from '../hooks/useInView';
+
+const INPUT_CLASS =
+  'cf-input-motion w-full h-12 px-4 rounded-xl border border-white/10 bg-white/[0.05] text-sm text-[#e2d6cd] placeholder-white/30 focus:outline-none focus:border-orange-400 focus:bg-white/[0.08]';
+
+function revealClass(inView, animation, delay = '') {
+  return inView ? `${animation} ${delay}`.trim() : 'opacity-0';
+}
 
 export default function Contact() {
+  const [sectionRef, sectionInView] = useInView('120px');
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -25,6 +34,7 @@ export default function Contact() {
 
   return (
     <section
+      ref={sectionRef}
       id="contact"
       className="relative w-full flex flex-col items-center justify-start px-6 pt-12 pb-20 font-sans tracking-wide text-[#e2d6cd] overflow-hidden"
       style={{
@@ -35,28 +45,32 @@ export default function Contact() {
         `,
       }}
     >
-
-      {/* HEADER */}
       <div className="text-center mb-10">
-        <p className="text-xs tracking-[0.3em] text-white/60 uppercase mb-2">
+        <p
+          className={`text-xs tracking-[0.3em] text-white/60 uppercase mb-2 ${revealClass(sectionInView, 'exp-reveal-up', 'exp-delay-1')}`}
+        >
           CONTACT US
         </p>
-        <h1 className="text-4xl md:text-5xl font-light text-orange-500">
+        <h1
+          className={`text-4xl md:text-5xl font-light text-orange-500 ${revealClass(sectionInView, 'exp-reveal-up', 'exp-delay-2')}`}
+        >
           Get in Touch
         </h1>
+        <span
+          className={`mx-auto mt-4 block h-0.5 w-12 rounded-full bg-orange-500 ${sectionInView ? 'exp-line-left exp-delay-3' : 'opacity-0 scale-x-0'}`}
+          aria-hidden
+        />
       </div>
 
-      {/* FORM CONTAINER */}
-      <div className="w-full max-w-5xl border border-white/10 rounded-xl p-8 bg-white/[0.04]">
-
+      <div
+        className={`w-full max-w-5xl border border-white/10 rounded-xl p-8 bg-white/[0.04] ${revealClass(sectionInView, 'cf-form-in', 'exp-delay-4')}`}
+      >
         <form onSubmit={handleSubmit} className="space-y-6">
-
-          {/* Top Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div
+            className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${revealClass(sectionInView, 'cf-field-in', 'court-delay-3')}`}
+          >
             <div className="flex flex-col space-y-2">
-              <label className="text-sm font-light text-[#dfd0c5]">
-                Full Name *
-              </label>
+              <label className="text-sm font-light text-[#dfd0c5]">Full Name *</label>
               <input
                 type="text"
                 name="fullName"
@@ -64,16 +78,11 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Name"
                 required
-                className="w-full h-12 px-4 rounded-xl border border-white/10 bg-white/[0.05] 
-                text-sm text-[#e2d6cd] placeholder-white/30 
-                focus:outline-none focus:border-orange-400 focus:bg-white/[0.08]"
+                className={INPUT_CLASS}
               />
             </div>
-
             <div className="flex flex-col space-y-2">
-              <label className="text-sm font-light text-[#dfd0c5]">
-                Email Address *
-              </label>
+              <label className="text-sm font-light text-[#dfd0c5]">Email Address *</label>
               <input
                 type="email"
                 name="email"
@@ -81,19 +90,16 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Email"
                 required
-                className="w-full h-12 px-4 rounded-xl border border-white/10 bg-white/[0.05] 
-                text-sm text-[#e2d6cd] placeholder-white/30 
-                focus:outline-none focus:border-orange-400 focus:bg-white/[0.08]"
+                className={INPUT_CLASS}
               />
             </div>
           </div>
 
-          {/* Middle Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div
+            className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${revealClass(sectionInView, 'cf-field-in', 'court-delay-4')}`}
+          >
             <div className="flex flex-col space-y-2">
-              <label className="text-sm font-light text-[#dfd0c5]">
-                Phone Number *
-              </label>
+              <label className="text-sm font-light text-[#dfd0c5]">Phone Number *</label>
               <input
                 type="tel"
                 name="phone"
@@ -101,16 +107,11 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Phone"
                 required
-                className="w-full h-12 px-4 rounded-xl border border-white/10 bg-white/[0.05] 
-                text-sm text-[#e2d6cd] placeholder-white/30 
-                focus:outline-none focus:border-orange-400 focus:bg-white/[0.08]"
+                className={INPUT_CLASS}
               />
             </div>
-
             <div className="flex flex-col space-y-2">
-              <label className="text-sm font-light text-[#dfd0c5]">
-                Enquiry Type *
-              </label>
+              <label className="text-sm font-light text-[#dfd0c5]">Enquiry Type *</label>
               <input
                 type="text"
                 name="enquiryType"
@@ -118,22 +119,16 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Enquiry"
                 required
-                className="w-full h-12 px-4 rounded-xl border border-white/10 bg-white/[0.05] 
-                text-sm text-[#e2d6cd] placeholder-white/30 
-                focus:outline-none focus:border-orange-400 focus:bg-white/[0.08]"
+                className={INPUT_CLASS}
               />
             </div>
           </div>
 
-          {/* Message with LIGHT YELLOW GLOW */}
-          <div className="flex flex-col space-y-2">
-            <label className="text-sm font-light text-[#dfd0c5]">
-              Message *
-            </label>
-
-            <div className="rounded-xl p-[1px] 
-              bg-[radial-gradient(circle_at_75%_60%,rgba(255,190,90,0.18),rgba(255,140,0,0.08),transparent_70%)]">
-              
+          <div
+            className={`flex flex-col space-y-2 ${revealClass(sectionInView, 'cf-field-in', 'court-delay-5')}`}
+          >
+            <label className="text-sm font-light text-[#dfd0c5]">Message *</label>
+            <div className="rounded-xl p-[1px] bg-[radial-gradient(circle_at_75%_60%,rgba(255,190,90,0.18),rgba(255,140,0,0.08),transparent_70%)]">
               <textarea
                 name="message"
                 value={formData.message}
@@ -141,17 +136,14 @@ export default function Contact() {
                 placeholder="Message"
                 rows={6}
                 required
-                className="w-full p-4 rounded-xl border border-white/10 
-                bg-white/5
-                text-sm text-[#e2d6cd] placeholder-white/30 
-                focus:outline-none focus:border-orange-300 
-                resize-none"
+                className="cf-input-motion w-full p-4 rounded-xl border border-white/10 bg-white/5 text-sm text-[#e2d6cd] placeholder-white/30 focus:outline-none focus:border-orange-300 resize-none"
               />
             </div>
           </div>
 
-          {/* Footer */}
-          <div className="flex flex-col space-y-6 items-center">
+          <div
+            className={`flex flex-col space-y-6 items-center ${revealClass(sectionInView, 'cf-field-in', 'court-delay-6')}`}
+          >
             <div className="flex items-center space-x-3 self-start">
               <input
                 type="checkbox"
@@ -161,16 +153,14 @@ export default function Contact() {
                 onChange={handleChange}
                 className="h-4 w-4 rounded border-white/30 bg-transparent text-orange-400 focus:ring-0"
               />
-              <label className="text-xs font-light text-[#bcaea4]">
+              <label htmlFor="agreeToTalk" className="text-xs font-light text-[#bcaea4]">
                 I agree to talk about my project with smart by tolabs
               </label>
             </div>
 
             <button
               type="submit"
-              className="group flex items-center space-x-2 px-10 py-3 rounded-full 
-              border border-white/30 text-xs text-[#dfd0c5] tracking-widest 
-              hover:bg-white/10"
+              className="court-btn-motion hero-btn-shine group flex items-center space-x-2 px-10 py-3 rounded-full border border-white/30 text-xs text-[#dfd0c5] tracking-widest hover:bg-white/10"
             >
               <span>Send Message</span>
               <svg
@@ -179,13 +169,12 @@ export default function Contact() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
               </svg>
             </button>
           </div>
-
         </form>
       </div>
     </section>
