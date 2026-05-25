@@ -5,7 +5,7 @@ import { getWhatsAppHref } from '../utils/whatsapp';
 
 const COURT_FEATURES = [
   { col: 0, items: ['4 Indoor Professional Courts', 'Premium Playing Surface'] },
-  { col: 1, items: ['Private Ladies Court', 'Highest Sealing'] },
+  { col: 1, items: ['Private Court', 'Highest Sealing'] },
 ];
 
 function revealClass(inView, animation, delay = '') {

@@ -52,9 +52,9 @@ const FOOTER_COLUMNS = [
     title: 'Quick Link',
     links: [
       { to: homeSectionPath('contact'), label: 'Contact us', isLink: true },
-      { href: '#faq', label: 'FAQs' },
-      { href: '#booking', label: 'Booking' },
-      { href: '#pages', label: 'Pages' },
+      // { href: '#faq', label: 'FAQs' },
+      // { href: '#booking', label: 'Booking' },
+      // { href: '#pages', label: 'Pages' },
     ],
   },
 ];

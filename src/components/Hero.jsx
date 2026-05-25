@@ -31,7 +31,7 @@ export default function Hero() {
 
       <div className="w-full max-w-2xl flex flex-col items-start space-y-5 z-10 text-left">
         <div className="w-full">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.15] break-words">
+          <h1 className="text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.15] break-words">
             <span className="block overflow-hidden">
               <span className="hero-reveal hero-reveal-delay-1 inline-block">
                 <span className="text-[#e85c0d] hero-accent-glow">Where</span> Padel
