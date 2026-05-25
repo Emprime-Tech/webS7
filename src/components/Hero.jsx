@@ -2,6 +2,7 @@ import React from 'react';
 import heroDesktop from '../assets/hero-desktop-opt.webp';
 import heroMobile from '../assets/hero-mobile-opt.webp';
 import OptimizedImage from './OptimizedImage';
+import { getWhatsAppHref } from '../utils/whatsapp';
 
 export default function Hero() {
   return (
@@ -51,12 +52,14 @@ export default function Hero() {
         </p>
 
         <div className="hero-reveal hero-reveal-delay-4 flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 w-full max-w-lg">
-          <button
-            type="button"
+          <a
+            href={getWhatsAppHref('bookCourt')}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hero-btn-in hero-btn-delay-1 hero-btn-shine group inline-flex items-center justify-center min-h-[48px] sm:min-h-[50px] w-full sm:w-auto px-8 md:px-10 py-3 rounded-full border-2 border-[#e85c0d] text-sm sm:text-base font-medium tracking-wide text-[#e85c0d] bg-black/35 backdrop-blur-sm shadow-lg shadow-black/25 transition-all duration-300 hover:bg-[#e85c0d] hover:text-white hover:shadow-[#e85c0d]/25 hover:scale-[1.03] active:scale-[0.98]"
           >
             Book The Court
-          </button>
+          </a>
 
           <a
             href="#about"

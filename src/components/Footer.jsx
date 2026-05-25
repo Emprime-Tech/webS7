@@ -5,6 +5,7 @@ import BrandLogo from './BrandLogo';
 import { homeSectionPath } from '../constants/navSections';
 import { useInView } from '../hooks/useInView';
 import OptimizedImage from './OptimizedImage';
+import { getWhatsAppHref } from '../utils/whatsapp';
 
 function revealClass(inView, animation, delay = '') {
   return inView ? `${animation} ${delay}`.trim() : 'opacity-0';
@@ -23,12 +24,14 @@ const FOOTER_COLUMNS = [
             <span className="text-xs font-light text-white/70">Join The Elite</span>
           </div>
         </div>
-        <button
-          type="button"
-          className="court-btn-motion hero-btn-shine h-12 px-10 rounded-xl border border-[#e85c0d] text-sm font-medium tracking-wide bg-transparent text-[#e85c0d] hover:bg-[#e85c0d]/10 transition-all duration-300"
+        <a
+          href={getWhatsAppHref('bookCourt')}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="court-btn-motion hero-btn-shine h-12 px-10 inline-flex items-center justify-center rounded-xl border border-[#e85c0d] text-sm font-medium tracking-wide bg-transparent text-[#e85c0d] hover:bg-[#e85c0d]/10 transition-all duration-300"
         >
           Book Now
-        </button>
+        </a>
       </div>
     ),
   },

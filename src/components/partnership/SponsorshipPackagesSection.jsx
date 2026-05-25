@@ -1,21 +1,35 @@
 import React from 'react';
+import { useInView } from '../../hooks/useInView';
 import { ACCENT, packages } from './constants';
 import SectionTitle from './SectionTitle';
 import OutlineButton from './OutlineButton';
 import TierCircle from './TierCircle';
+import { revealClass } from './reveal';
+import { getWhatsAppHref } from '../../utils/whatsapp';
+
+const PACKAGE_DELAYS = ['exp-delay-2', 'exp-delay-3', 'exp-delay-4'];
 
 export default function SponsorshipPackagesSection() {
+  const [ref, inView] = useInView('120px');
+
   return (
-    <section className="perf-section px-6 md:px-12 lg:px-20 py-20 md:py-28">
-      <SectionTitle>Sponsorship Packages</SectionTitle>
+    <section ref={ref} className="perf-section px-6 md:px-12 lg:px-20 py-20 md:py-28">
+      <SectionTitle className={revealClass(inView, 'exp-reveal-up', 'exp-delay-1')}>
+        Sponsorship Packages
+      </SectionTitle>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 lg:gap-12 md:items-start">
-        {packages.map((pkg) => (
-          <div key={pkg.label} className="flex flex-col items-center w-full">
-            <TierCircle src={pkg.badge} alt={pkg.label} />
+        {packages.map((pkg, index) => (
+          <div
+            key={pkg.label}
+            className={`ptr-card-hover flex flex-col items-center w-full min-w-0 ${revealClass(inView, 'ptr-package-in', PACKAGE_DELAYS[index] || 'exp-delay-4')}`}
+          >
+            <div className={inView ? 'ptr-tier-in w-full' : 'opacity-0 w-full'}>
+              <TierCircle src={pkg.badge} alt={pkg.label} />
+            </div>
 
             <div
-              className="w-full mt-10 rounded-md overflow-hidden flex-1"
+              className="w-full mt-10 rounded-md overflow-hidden flex-1 transition-shadow duration-300 hover:shadow-[0_12px_40px_rgba(232,92,13,0.12)]"
               style={{ border: `1px solid ${ACCENT}` }}
             >
               <div
@@ -44,7 +58,10 @@ export default function SponsorshipPackagesSection() {
             </div>
 
             {pkg.showCta ? (
-              <OutlineButton className="mt-10 px-10 py-2.5">
+              <OutlineButton
+                href={getWhatsAppHref('becomePartner')}
+                className="court-btn-motion mt-10 px-10 py-2.5"
+              >
                 Become a Partner
               </OutlineButton>
             ) : (

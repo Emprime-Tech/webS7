@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useInView } from '../hooks/useInView';
+import { openWhatsApp } from '../utils/whatsapp';
 
 const INPUT_CLASS =
   'cf-input-motion w-full h-12 px-4 rounded-xl border border-white/10 bg-white/[0.05] text-sm text-[#e2d6cd] placeholder-white/30 focus:outline-none focus:border-orange-400 focus:bg-white/[0.08]';
@@ -29,7 +30,7 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Submitted:', formData);
+    openWhatsApp('contactForm', formData);
   };
 
   return (

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import BrandLogo from './BrandLogo';
 import { NAV_ITEMS, homeSectionPath } from '../constants/navSections';
+import { getWhatsAppHref } from '../utils/whatsapp';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,9 +32,14 @@ export default function Navbar() {
 
         {/* Right Side */}
         <div className="flex items-center space-x-4">
-          <button className="h-10 px-6 rounded-xl border border-white/30 text-xs tracking-widest bg-black/40 text-[#e85c0d] hover:bg-black/60">
+          <a
+            href={getWhatsAppHref('bookCourt')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="h-10 px-6 inline-flex items-center justify-center rounded-xl border border-white/30 text-xs tracking-widest bg-black/40 text-[#e85c0d] hover:bg-black/60 transition"
+          >
             Book Now
-          </button>
+          </a>
 
           <button
             type="button"
@@ -62,6 +68,15 @@ export default function Navbar() {
             {item.label}
           </Link>
         ))}
+        <a
+          href={getWhatsAppHref('bookCourt')}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={closeMenu}
+          className="h-10 px-8 inline-flex items-center justify-center rounded-xl border border-white/30 text-xs tracking-widest text-[#e85c0d] hover:bg-black/60"
+        >
+          Book Now
+        </a>
       </div>
     </div>
   );

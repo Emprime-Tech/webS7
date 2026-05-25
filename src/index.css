@@ -162,6 +162,21 @@
     animation: page-transition-logo 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
+  @keyframes initial-loader-logo-pulse {
+    0%, 100% {
+      filter: drop-shadow(0 0 20px rgba(232, 92, 13, 0.25));
+      transform: scale(1);
+    }
+    50% {
+      filter: drop-shadow(0 0 36px rgba(232, 92, 13, 0.45));
+      transform: scale(1.03);
+    }
+  }
+
+  .initial-loader-logo-pulse {
+    animation: initial-loader-logo-pulse 2.2s ease-in-out infinite;
+  }
+
   /* Hero entrance & ambient motion */
   @keyframes hero-ken-burns {
     0% { transform: scale(1.06) translate3d(0, 0, 0); }
@@ -696,6 +711,73 @@
       transform: scale(1.15) translateY(-2px);
     }
   }
+
+  /* Partnership page */
+  @keyframes ptr-package-in {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 2.5rem, 0) scale(0.94);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes ptr-tier-in {
+    from {
+      opacity: 0;
+      transform: scale(0.75);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes ptr-line-grow {
+    from {
+      transform: scaleY(0);
+      opacity: 0;
+    }
+    to {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  .ptr-package-in {
+    animation: ptr-package-in 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .ptr-tier-in {
+    animation: ptr-tier-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .ptr-line-accent {
+    transform-origin: top center;
+    animation: ptr-line-grow 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .ptr-card-hover {
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @media (hover: hover) {
+    .ptr-card-hover:hover {
+      transform: translateY(-10px);
+    }
+
+    .ptr-card-hover:hover .ptr-tier-in img {
+      transform: scale(1.05);
+    }
+  }
+
+  .ptr-tier-in img {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -730,7 +812,11 @@
   .cf-footer-col,
   .cf-divider-grow,
   .page-transition-overlay,
-  .page-transition-logo {
+  .page-transition-logo,
+  .initial-loader-logo-pulse,
+  .ptr-package-in,
+  .ptr-tier-in,
+  .ptr-line-accent {
     animation: none;
   }
 
@@ -752,7 +838,9 @@
   .cf-field-in,
   .cf-icon-pop,
   .cf-map-reveal,
-  .cf-footer-col {
+  .cf-footer-col,
+  .ptr-package-in,
+  .ptr-tier-in {
     opacity: 1;
     transform: none;
     filter: none;
@@ -765,7 +853,9 @@
   .cf-icon-box:hover,
   a:hover .cf-icon-box,
   .cf-footer-link:hover,
-  .cf-social-icon:hover {
+  .cf-social-icon:hover,
+  .ptr-card-hover:hover,
+  .ptr-card-hover:hover .ptr-tier-in img {
     transform: none;
   }
 
