@@ -146,17 +146,17 @@ export default function Contact() {
             className={`flex flex-col space-y-5 sm:space-y-6 items-stretch sm:items-center w-full ${revealClass(sectionInView, 'cf-field-in', 'court-delay-6')}`}
           >
             <div className="flex items-start gap-3 w-full min-w-0">
-              <input
+              {/* <input
                 type="checkbox"
                 id="agreeToTalk"
                 name="agreeToTalk"
                 checked={formData.agreeToTalk}
                 onChange={handleChange}
                 className="h-4 w-4 mt-0.5 shrink-0 rounded border-white/30 bg-transparent text-orange-400 focus:ring-0"
-              />
-              <label htmlFor="agreeToTalk" className="text-xs font-light text-[#bcaea4] leading-relaxed text-left">
+              /> */}
+              {/* <label htmlFor="agreeToTalk" className="text-xs font-light text-[#bcaea4] leading-relaxed text-left">
                 I agree to talk about my project with smart by tolabs
-              </label>
+              </label> */}
             </div>
 
             <button

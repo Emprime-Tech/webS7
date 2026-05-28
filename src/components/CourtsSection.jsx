@@ -65,7 +65,7 @@ export default function CourtsSection() {
         <h2
           className={`text-3xl sm:text-4xl md:text-5xl font-medium text-[#e85c0d] mb-3 ${revealClass(courtsInView, 'exp-reveal-up', 'exp-delay-1')}`}
         >
-          The Grand Arena
+          Premium Indoor Courts
         </h2>
         <p
           className={`text-lg md:text-xl font-light text-white/90 mb-4 ${revealClass(courtsInView, 'exp-reveal-up', 'exp-delay-2')}`}

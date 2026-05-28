@@ -2,17 +2,11 @@
 export const WHATSAPP_NUMBER = '971585869190';
 
 const MESSAGES = {
-  bookCourt: `Hi S7 Padel,
+  bookCourt: `Hi Team S7,
+Looking to reserve a court. Kindly share available slots and prices`,
 
-I would like to book a court. Please share available slots and pricing.
-
-Thank you!`,
-
-  bookCoaching: `Hi S7 Padel,
-
-I would like to book a coaching session. Please let me know availability and rates.
-
-Thank you!`,
+  bookCoaching: `Hello S7,
+Interested in a coaching session. Kindly send available timings and rates.`,
 
   getInTouch: `Hi S7 Padel,
 
@@ -48,7 +42,8 @@ Thank you!`,
 export function buildContactFormMessage({ fullName, email, phone, enquiryType, message }) {
   return `Hi S7 Padel,
 
-*New enquiry from the website*
+*Hi Team S7,
+    Looking to reserve a court. Kindly share available slots and prices.*
 
 Name: ${fullName}
 Email: ${email}
