@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaWhatsapp } from 'react-icons/fa';
 import { useInView } from '../hooks/useInView';
 import { getWhatsAppHref } from '../utils/whatsapp';
 
@@ -157,14 +158,7 @@ export default function CourtsSection() {
               rel="noopener noreferrer"
               className="court-btn-motion mt-6 inline-flex items-center justify-center gap-2 border border-[#e85c0d] text-[#e85c0d] px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm tracking-wide bg-transparent hover:bg-[#e85c0d]/10 shrink-0 group"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 transition-transform duration-300 group-hover:scale-110"
-              >
-                <path d="M20.52 3.48A11.77 11.77 0 0012.05 0C5.46 0 .09 5.37.09 11.96c0 2.1.55 4.16 1.6 5.97L0 24l6.22-1.63a11.9 11.9 0 005.83 1.48h.01c6.59 0 11.96-5.37 11.96-11.96 0-3.2-1.25-6.2-3.5-8.41z" />
-              </svg>
+              <FaWhatsapp className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 transition-transform duration-300 group-hover:scale-110" />
               Get in touch Whatsapp
             </a>
           </div>

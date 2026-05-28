@@ -8,7 +8,8 @@ Looking to reserve a court. Kindly share available slots and prices`,
   bookCoaching: `Hello S7,
 Interested in a coaching session. Kindly send available timings and rates.`,
 
-  getInTouch: `Hi S7 Padel,
+  getInTouch: `Hi Team S7,
+Looking to reserve a court. Kindly share available slots and prices,
 
 I would like to get in touch. Please share more information about S7 Padel.
 
@@ -42,8 +43,7 @@ Thank you!`,
 export function buildContactFormMessage({ fullName, email, phone, enquiryType, message }) {
   return `Hi S7 Padel,
 
-*Hi Team S7,
-    Looking to reserve a court. Kindly share available slots and prices.*
+*New enquiry from the website*
 
 Name: ${fullName}
 Email: ${email}
